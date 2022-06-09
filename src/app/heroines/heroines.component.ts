@@ -1,5 +1,6 @@
 // You always import the Component symbol from the Angular core library and annotate the component class with @Component.
 import { Component, OnInit } from '@angular/core';
+import { Heroine } from '../heroine';
 
 // @Component is a decorator function that specifies the Angular metadata for the component.
 @Component({
@@ -9,7 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeroinesComponent implements OnInit {
 
-  heroine = 'Captain Marvel';
+  heroine: Heroine = {
+    id: 1,
+    name: 'Captain Marvel'
+  };
 
   constructor() { }
 
