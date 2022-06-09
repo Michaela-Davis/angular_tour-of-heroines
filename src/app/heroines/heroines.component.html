@@ -8,3 +8,16 @@ Pipes are a good way to format strings, currency amounts, dates and other displa
   <!-- ngModel is a valid Angular directive but isn't available by default. It belongs to the optional FormsModule and you must opt-in to using it in  src/app/app.module.ts-->
   <input id="name" [(ngModel)]="heroine.name" placeholder="name">
 </div>
+
+<h2>My Heroines</h2>
+<ul class="heroes">
+  <!-- The *ngFor is Angular's repeater directive. It repeats the host element for each element in a list.
+    Don't forget the asterisk (*) character in front of ngFor. It's a critical part of the syntax. -->
+  <li *ngFor="let heroine of heroines">
+    <!-- it is better for accessibility purposes to use natively interactive HTML elements (e.g. <button>) instead of adding event listeners to non-interactive ones (e.g. <li>) -->
+    <button type="button">
+      <span class="badge">{{heroine.id}}</span>
+      <span class="name">{{heroine.name}}</span>
+    </button>
+  </li>
+</ul>
