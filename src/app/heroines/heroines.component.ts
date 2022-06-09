@@ -17,6 +17,11 @@ export class HeroinesComponent implements OnInit {
     id: 1,
     name: 'Captain Marvel'
   };
+  // assigns the clicked hero from the template to the component's selectedHeroine
+  selectedHeroine?: Heroine;
+  onSelect(heroine: Heroine): void {
+    this.selectedHeroine = heroine;
+}
 
   constructor() { }
 

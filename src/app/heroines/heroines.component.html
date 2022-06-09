@@ -1,21 +1,24 @@
-<div>
-  <label for="name">Hero name: </label>
-
-  <!-- [(ngModel)] is Angular's two-way data binding syntax.
-  Here it binds the hero.name property to the HTML textbox so that data can flow in both directions: From the hero.name property to the textbox and from the textbox back to the hero.name. -->
-  <!-- ngModel is a valid Angular directive but isn't available by default. It belongs to the optional FormsModule and you must opt-in to using it in  src/app/app.module.ts-->
-  <input id="name" [(ngModel)]="heroine.name" placeholder="name">
-</div>
-
+<!-- COMPONENT TEMPLATE -->
 <h2>My Heroines</h2>
 <ul class="heroes">
   <!-- The *ngFor is Angular's repeater directive. It repeats the host element for each element in a list.
     Don't forget the asterisk (*) character in front of ngFor. It's a critical part of the syntax. -->
   <li *ngFor="let heroine of heroines">
     <!-- it is better for accessibility purposes to use natively interactive HTML elements (e.g. <button>) instead of adding event listeners to non-interactive ones (e.g. <li>) -->
-    <button type="button">
+    <button type="button" (click)="onSelect(heroine)">
       <span class="badge">{{heroine.id}}</span>
       <span class="name">{{heroine.name}}</span>
     </button>
   </li>
 </ul>
+<div *ngIf="selectedHeroine">
+  <h2>{{selectedHeroine.name | uppercase}} Details</h2>
+  <div>id: {{selectedHeroine.id}}</div>
+  <div>
+    <label for="heroine-name">Heroine name: </label>
+      <!-- [(ngModel)] is Angular's two-way data binding syntax.
+  Here it binds the heroine.name property to the HTML textbox so that data can flow in both directions: From the heroine.name property to the textbox and from the textbox back to the heroine.name. -->
+  <!-- ngModel is a valid Angular directive but isn't available by default. It belongs to the optional FormsModule and you must opt-in to using it in  src/app/app.module.ts-->
+    <input id="heroine-name" [(ngModel)]="selectedHeroine.name" placeholder="name">
+  </div>
+</div>
