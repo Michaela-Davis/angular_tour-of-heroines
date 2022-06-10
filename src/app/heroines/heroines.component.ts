@@ -2,6 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Heroine } from '../heroine';
 import { HeroineService } from '../heroine.service';
+import { MessageService } from '../message.service';
 
 
 // @Component is a decorator function that specifies the Angular metadata for the component.
@@ -16,7 +17,7 @@ export class HeroinesComponent implements OnInit {
 
   heroines: Heroine[] =[];
 
-  constructor(private heroineService: HeroineService) {}
+  constructor(private heroineService: HeroineService, private messageService: MessageService) {}
 
   // The ngOnInit() is a lifecycle hook. Angular calls ngOnInit() shortly after creating a component. It's a good place to put initialization logic.
   ngOnInit(): void {
@@ -25,6 +26,7 @@ export class HeroinesComponent implements OnInit {
 
   onSelect(heroine: Heroine): void {
     this.selectedHeroine = heroine;
+    this.messageService.add(`HeroinesComponent: Selected heroine id=${heroine.id}`);
   }
 
   // waits for the Observable to emit the array of heroes —which could happen now or several minutes from now. The subscribe() method passes the emitted array to the callback, which sets the component's heroes property.
