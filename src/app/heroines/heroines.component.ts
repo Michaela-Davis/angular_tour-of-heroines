@@ -12,8 +12,6 @@ import { MessageService } from '../message.service';
   styleUrls: ['./heroines.component.css']
 })
 export class HeroinesComponent implements OnInit {
-    // assigns the clicked hero from the template to the component's selectedHeroine
-    selectedHeroine?: Heroine;
 
   heroines: Heroine[] =[];
 
@@ -22,11 +20,6 @@ export class HeroinesComponent implements OnInit {
   // The ngOnInit() is a lifecycle hook. Angular calls ngOnInit() shortly after creating a component. It's a good place to put initialization logic.
   ngOnInit(): void {
     this.getHeroines();
-  }
-
-  onSelect(heroine: Heroine): void {
-    this.selectedHeroine = heroine;
-    this.messageService.add(`HeroinesComponent: Selected heroine id=${heroine.id}`);
   }
 
   // waits for the Observable to emit the array of heroes —which could happen now or several minutes from now. The subscribe() method passes the emitted array to the callback, which sets the component's heroes property.
