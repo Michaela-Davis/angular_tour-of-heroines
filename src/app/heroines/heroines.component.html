@@ -6,7 +6,7 @@
   <li *ngFor="let heroine of heroines">
     <!-- it is better for accessibility purposes to use natively interactive HTML elements (e.g. <button>) instead of adding event listeners to non-interactive ones (e.g. <li>) -->
     <button [class.selected]="heroine === selectedHeroine" type="button" (click)="onSelect(heroine)">
-      <!-- <span class="badge">{{heroine.id}}</span> -->
+      <span class="badge">{{heroine.id}}</span>
       <span class="name">{{heroine.name}}</span>
     </button>
   </li>

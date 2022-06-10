@@ -27,8 +27,10 @@ export class HeroinesComponent implements OnInit {
     this.selectedHeroine = heroine;
   }
 
+  // waits for the Observable to emit the array of heroes —which could happen now or several minutes from now. The subscribe() method passes the emitted array to the callback, which sets the component's heroes property.
   getHeroines(): void {
-    this.heroines = this.heroineService.getHeroines();
+    this.heroineService.getHeroines()
+      .subscribe(heroines => this.heroines =heroines);
   }
 
 }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Heroine } from './heroine';
 import { HEROINES } from './mock-heroines';
+import { Observable, of } from 'rxjs';
 
 // You must make the HeroService available to the dependency injection system before Angular can inject it into the HeroesComponent by registering a provider. A provider is something that can create or deliver a service; in this case, it instantiates the HeroService class to provide the service.
 
@@ -11,8 +12,9 @@ import { HEROINES } from './mock-heroines';
 
 export class HeroineService {
 
-  getHeroines(): Heroine[] {
-    return HEROINES;
+  getHeroines(): Observable<Heroine[]> {
+    const heroines = of(HEROINES);
+    return heroines;
   }
 
   constructor() { }
