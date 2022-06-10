@@ -11,20 +11,20 @@ import { HeroineService } from '../heroine.service';
   styleUrls: ['./heroines.component.css']
 })
 export class HeroinesComponent implements OnInit {
+    // assigns the clicked hero from the template to the component's selectedHeroine
+    selectedHeroine?: Heroine;
 
-  heroines = Heroine[] =[];
-
-  // assigns the clicked hero from the template to the component's selectedHeroine
-  selectedHeroine?: Heroine;
-  onSelect(heroine: Heroine): void {
-    this.selectedHeroine = heroine;
-  }
+  heroines: Heroine[] =[];
 
   constructor(private heroineService: HeroineService) {}
 
   // The ngOnInit() is a lifecycle hook. Angular calls ngOnInit() shortly after creating a component. It's a good place to put initialization logic.
   ngOnInit(): void {
     this.getHeroines();
+  }
+
+  onSelect(heroine: Heroine): void {
+    this.selectedHeroine = heroine;
   }
 
   getHeroines(): void {
