@@ -13,12 +13,18 @@ import { MessageService } from './message.service';
 
 export class HeroineService {
 
+  // This is a typical "service-in-service" scenario: You inject the MessageService into the HeroService which is injected into the HeroesComponent.
+  constructor(private messageService: MessageService) { }
+
   getHeroines(): Observable<Heroine[]> {
     const heroines = of(HEROINES);
     this.messageService.add('HeroineService: fetched heroines');
     return heroines;
   }
 
-  // This is a typical "service-in-service" scenario: You inject the MessageService into the HeroService which is injected into the HeroesComponent.
-  constructor(private messageService: MessageService) { }
+  getHeroine(id: number): Observable<Heroine> {
+    const heroine = HEROINES.find(h => h.id === id)!;
+    this.messageService.add(`HeroineService: fetched heroine id=${id}`);
+    return of(heroine);
+  }
 }
